@@ -1,0 +1,41 @@
+// src/styles/_tokens.scss
+:root {
+  // Colores base
+  --color-bg: #121218;
+  --color-surface: #1E1E2A;
+  --color-surface-alt: #26263594;
+
+  // Acento (marquesina)
+  --color-primary: #E3B23C;
+  --color-primary-dark: #C89530;
+  --color-primary-contrast: #12121A;
+
+  // Texto
+  --color-text: #F5F1E8;
+  --color-text-muted: #A8A6B3;
+
+  // Estados
+  --color-danger: #E0555A;
+  --color-success: #4CAF7D;
+  --color-vip: #B98CD8;      // para butacas VIP más adelante
+  --color-accesible: #4FA8D8; // para butacas accesibles más adelante
+
+  --color-border: #2E2E3D;
+
+  // Tipografía
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  // Espaciado (escala de 4px)
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+
+  // Bordes
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}

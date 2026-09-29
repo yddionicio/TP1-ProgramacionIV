@@ -1,0 +1,105 @@
+.cartelera-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+}
+
+// El secreto de la grilla ordenada
+.movies-grid {
+  display: grid;
+  // Crea columnas automáticas que miden mínimo 240px y se expanden equitativamente
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem; // Espacio entre tarjetas
+}
+
+.movie-card {
+  background: var(--color-surface, #1e1e1e);
+  border: 1px solid var(--color-border, #333);
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden; // Vital para que la imagen no se salga de los bordes redondeados
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary, #e50914);
+  }
+
+  // Contenedor estricto para la imagen del póster
+  .poster-container {
+    width: 100%;
+    height: 350px; // Altura fija uniforme para todos los pósters verticales
+    position: relative;
+    background: #000;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // Recorta la imagen proporcionalmente para rellenar sin deformar
+      display: block;
+    }
+  }
+
+  // Zona de textos e info inferior
+  .movie-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+
+    .header-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        color: var(--color-text, #fff);
+        line-height: 1.3;
+      }
+
+      .badge-rating {
+        font-size: 0.7rem;
+        background: #333;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+    }
+
+    .formats {
+      font-size: 0.75rem;
+      color: var(--color-text-muted, #999);
+      margin: 0;
+    }
+
+    // Botón de estado abajo (Estreno, etc.)
+    .btn {
+      margin-top: auto; // Empuja el botón siempre al fondo de la tarjeta
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 0.5rem;
+      background: var(--color-surface-alt, #2a2a2a);
+      border: 1px solid var(--color-border, #444);
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+
+      &:hover {
+        background: #3a3a3a;
+      }
+    }
+  }
+}

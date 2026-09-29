@@ -1,0 +1,44 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="card">
+  <h2>Crear cuenta</h2>
+
+  <div class="input-group">
+    <label>Nombre</label>
+    <input class="input" formControlName="nombre" placeholder="Nombre" />
+  </div>
+
+  <div class="input-group">
+    <label>Apellido</label>
+    <input class="input" formControlName="apellido" placeholder="Apellido" />
+  </div>
+
+  <div class="input-group">
+    <label>Email</label>
+    <input class="input" formControlName="email" placeholder="Email" />
+  </div>
+
+  <div class="input-group">
+    <label>Contraseña</label>
+    <input class="input" formControlName="password" type="password" placeholder="Contraseña" />
+  </div>
+
+  <div class="input-group">
+    <label>Fecha de nacimiento</label>
+    <input class="input" formControlName="fechaNacimiento" type="date" />
+    @if (form.get('fechaNacimiento')?.hasError('menorDe13') && form.get('fechaNacimiento')?.touched) {
+      <p class="error-text">Debés tener al menos 13 años para registrarte.</p>
+    }
+  </div>
+
+  <div class="input-group">
+    <label>Grupo sanguíneo (opcional)</label>
+    <input class="input" formControlName="grupoSanguineo" />
+  </div>
+
+  <div class="input-group">
+    <label>Color de ojos (opcional)</label>
+    <input class="input" formControlName="colorOjos" />
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Registrarme</button>
+  @if (errorMsg) { <p class="error-text">{{ errorMsg }}</p> }
+</form>

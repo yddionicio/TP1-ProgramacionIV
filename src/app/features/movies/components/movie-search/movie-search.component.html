@@ -1,0 +1,11 @@
+<p>¡Bienvenido! a nuestra cartelera</p>
+<p>Explorá las películas más destacadas</p>
+<form [formGroup]="form" class="buscador">
+  <input class="input" formControlName="texto" placeholder="Buscar película..." />
+  <select class="input" formControlName="genero">
+    <option value="">Todos los géneros</option>
+    @for (g of generos; track g) {
+      <option [value]="g">{{ g }}</option>
+    }
+  </select>
+</form>
