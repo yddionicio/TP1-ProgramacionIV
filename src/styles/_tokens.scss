@@ -1,41 +1,47 @@
 // src/styles/_tokens.scss
 :root {
-  // Colores base
-  --color-bg: #121218;
-  --color-surface: #1E1E2A;
-  --color-surface-alt: #26263594;
+  // Fondo
+  --color-fondo: #0A0A0F;
+  --color-superficie: #14141C;
+  --color-superficie-alt: #1C1C27;
 
-  // Acento (marquesina)
-  --color-primary: #E3B23C;
-  --color-primary-dark: #C89530;
-  --color-primary-contrast: #12121A;
+  // Acento (celeste, como el de la referencia)
+  --color-primario: #2FD6E8;
+  --color-primario-oscuro: #22AFC0;
+  --color-primario-contraste: #06171A;
 
   // Texto
-  --color-text: #F5F1E8;
-  --color-text-muted: #A8A6B3;
+  --color-texto: #F2F4F8;
+  --color-texto-atenuado: #8C8FA3;
 
-  // Estados
-  --color-danger: #E0555A;
-  --color-success: #4CAF7D;
-  --color-vip: #B98CD8;      // para butacas VIP más adelante
-  --color-accesible: #4FA8D8; // para butacas accesibles más adelante
+  // Badges de estado
+  --color-badge-estreno: #2FD6E8;
+  --color-badge-preventa: #E8397A;
+  --color-badge-texto: #06171A;
 
-  --color-border: #2E2E3D;
+  // Estados generales
+  --color-peligro: #E5555C;
+  --color-exito: #3FC97A;
+  --color-butaca-vip: #C78CF0;
+  --color-butaca-accesible: #4FA8D8;
+
+  --color-borde: #26263A;
 
   // Tipografía
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  --fuente-titulo: 'Poppins', sans-serif;
+  --fuente-texto: 'Inter', sans-serif;
 
-  // Espaciado (escala de 4px)
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 16px;
-  --space-4: 24px;
-  --space-5: 32px;
-  --space-6: 48px;
+  // Espaciado
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 16px;
+  --espacio-4: 24px;
+  --espacio-5: 32px;
+  --espacio-6: 48px;
 
   // Bordes
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radio-sm: 6px;
+  --radio-md: 12px;
+  --radio-lg: 20px;
+  --radio-pill: 999px;
 }

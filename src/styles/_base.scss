@@ -1,1 +1,217 @@
+// src/styles/_base.scss
+* { box-sizing: border-box; }
 
+body {
+  margin: 0;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fuente-titulo);
+  color: var(--color-texto);
+  margin: 0 0 var(--espacio-3);
+}
+
+// ---------- Botones ----------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-2) var(--espacio-4);
+  border-radius: var(--radio-sm);
+  border: none;
+  font-family: var(--fuente-texto);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+  &:active:not(:disabled) { transform: scale(0.98); }
+}
+
+.btn-primary {
+  background: var(--color-primario);
+  color: var(--color-primario-contraste);
+  &:hover:not(:disabled) { background: var(--color-primario-oscuro); }
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+  &:hover:not(:disabled) { border-color: var(--color-primario); }
+}
+
+.btn-danger {
+  background: var(--color-peligro);
+  color: var(--color-texto);
+}
+
+// ---------- Cards genéricas ----------
+.card {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-4);
+}
+
+.card-hover {
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  &:hover { transform: translateY(-4px); border-color: var(--color-primario); }
+}
+
+// ---------- Inputs ----------
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  margin-bottom: var(--espacio-3);
+  label { font-size: 0.85rem; color: var(--color-texto-atenuado); }
+}
+
+.input {
+  background: var(--color-superficie-alt);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  padding: var(--espacio-2) var(--espacio-3);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  &:focus { outline: none; border-color: var(--color-primario); }
+  &.input-error { border-color: var(--color-peligro); }
+}
+
+.error-text {
+  color: var(--color-peligro);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+// ---------- Navbar ----------
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espacio-3) var(--espacio-5);
+  background: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.navbar-logo {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--color-texto);
+  letter-spacing: 0.5px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: var(--espacio-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: var(--color-texto-atenuado);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: color 0.15s ease;
+  &:hover, &.activo { color: var(--color-primario); }
+}
+
+// ---------- Badges sobre las cards ----------
+.badge {
+  position: absolute;
+  top: var(--espacio-2);
+  right: var(--espacio-2);
+  padding: 4px 10px;
+  border-radius: var(--radio-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-badge-texto);
+}
+
+.badge-estreno { background: var(--color-badge-estreno); }
+.badge-preventa { background: var(--color-badge-preventa); color: var(--color-texto); }
+
+// ---------- Selector de día (píldoras) ----------
+.selector-dias {
+  display: flex;
+  gap: var(--espacio-2);
+  overflow-x: auto;
+  padding-bottom: var(--espacio-2);
+  margin-bottom: var(--espacio-4);
+  &::-webkit-scrollbar { height: 4px; }
+  &::-webkit-scrollbar-thumb { background: var(--color-borde); border-radius: var(--radio-pill); }
+}
+
+.dia-pill {
+  flex-shrink: 0;
+  padding: var(--espacio-2) var(--espacio-3);
+  border-radius: var(--radio-pill);
+  background: var(--color-superficie-alt);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto-atenuado);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  small { display: block; font-weight: 400; opacity: 0.8; }
+  &:hover { border-color: var(--color-primario); }
+  &.activo {
+    background: var(--color-primario);
+    color: var(--color-primario-contraste);
+    border-color: var(--color-primario);
+  }
+}
+
+// ---------- Grid de cartelera ----------
+.grid-peliculas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--espacio-4);
+  padding: var(--espacio-4) var(--espacio-5);
+}
+
+.tarjeta-pelicula {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: var(--radio-md);
+    border: 1px solid var(--color-borde);
+    display: block;
+  }
+
+  h3 {
+    font-family: var(--fuente-texto);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: var(--espacio-2) 0 2px;
+  }
+
+  .ficha-meta {
+    font-size: 0.8rem;
+    color: var(--color-texto-atenuado);
+    margin: 0 0 2px;
+  }
+}

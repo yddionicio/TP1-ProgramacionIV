@@ -1,19 +1,9 @@
-<router-outlet></router-outlet>
-<header class="site-header">
-  <div class="container site-header__inner">
-    <a class="logo" routerLink="/peliculas">CINE<span>APP</span></a>
+<nav class="navbar">
+  <span class="navbar-logo">CINE<span style="color: var(--color-primario)">APP</span></span>
+  <ul class="navbar-links">
+    <li><a routerLink="/peliculas" routerLinkActive="activo">Cartelera</a></li>
+    <li><a routerLink="/auth/login" routerLinkActive="activo">Ingresar</a></li>
+  </ul>
+</nav>
 
-    <nav class="nav" aria-label="Principal">
-      <a routerLink="/peliculas" routerLinkActive="active">Cartelera</a>
-      <a routerLink="/login" routerLinkActive="active">Ingresar</a>
-    </nav>
-  </div>
-</header>
-
-<main class="site-main">
-  <router-outlet />
-</main>
-
-<footer class="site-footer">
-  <div class="container">© 2026 CineApp · Programación IV</div>
-</footer>
+<router-outlet />

@@ -1,3 +1,2 @@
-// src/styles.scss
-@import 'styles/tokens';
-@import 'styles/base';
+@use './styles/tokens';
+@use './styles/base';

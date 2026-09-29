@@ -1,0 +1,28 @@
+.tarjeta-pelicula {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: var(--radio-md);
+    border: 1px solid var(--color-borde);
+    display: block;
+  }
+
+  h3 {
+    font-family: var(--fuente-texto);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: var(--espacio-2) 0 2px;
+  }
+
+  .ficha-meta {
+    font-size: 0.8rem;
+    color: var(--color-texto-atenuado);
+    margin: 0 0 2px;
+  }
+}

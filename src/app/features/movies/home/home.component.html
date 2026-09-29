@@ -2,25 +2,11 @@
   <h2>Películas en Cartelera</h2>
   
   <app-movie-search (filtrar)="aplicarFiltro($event)"></app-movie-search>
-
-  <div class="movies-grid">
-    @for (pelicula of peliculas(); track pelicula.id) {
-      <article class="card card-hover movie-card">
-        <div class="poster-container">
-          <img [src]="pelicula.imagen_url" [alt]="pelicula.nombre" />
-        </div>
-        
-        <div class="movie-info">
-          <div class="header-info">
-            <h3>{{ pelicula.nombre }}</h3>
-            <span class="badge-rating">R-17</span>
-          </div>
-          
-          <p class="formats">2D · COMFORT · D-BOX</p>
-          
-          <button class="btn btn-secondary btn-sm">Estreno</button>
-        </div>
-      </article>
+  
+  <!-- Contenedor de la grilla -->
+  <div class="grid-peliculas">
+    @for (peli of peliculas(); track peli.id) {
+      <app-movie-card [pelicula]="peli" />
     } @empty {
       <p>No se encontraron películas.</p>
     }

@@ -1,0 +1,24 @@
+.pantalla-auth {
+  display: flex;
+  justify-content: center;
+  padding: var(--espacio-6) var(--espacio-3);
+
+  .card {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: var(--espacio-2);
+  }
+
+  .link-secundario {
+    text-align: center;
+    margin-top: var(--espacio-3);
+    font-size: 0.85rem;
+    color: var(--color-texto-atenuado);
+
+    a { color: var(--color-primario); text-decoration: none; }
+  }
+}

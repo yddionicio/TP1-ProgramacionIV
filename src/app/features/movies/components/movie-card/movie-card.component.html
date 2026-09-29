@@ -1,4 +1,11 @@
-<a class="card card-hover" [routerLink]="['/peliculas', pelicula.id]">
+<a class="tarjeta-pelicula" [routerLink]="['/peliculas', pelicula.id]">
+  @if (esPreventa()) {
+    <span class="badge badge-preventa">Preventa</span>
+  } @else if (esEstreno()) {
+    <span class="badge badge-estreno">Estreno</span>
+  }
   <img [src]="pelicula.imagen_url" [alt]="pelicula.nombre" />
   <h3>{{ pelicula.nombre }}</h3>
+  <p class="ficha-meta">{{ generosTexto() }}</p>
+  <p class="ficha-meta">{{ pelicula.formatos.join(' · ') }}</p>
 </a>
