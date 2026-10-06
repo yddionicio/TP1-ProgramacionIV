@@ -1,0 +1,32 @@
+<h2>Elegí tus butacas</h2>
+
+<div class="leyenda">
+  <span class="leyenda-item"><i class="muestra normal"></i> Normal</span>
+  <span class="leyenda-item"><i class="muestra accesible"></i> Accesible</span>
+  <span class="leyenda-item"><i class="muestra vip"></i> VIP</span>
+  <span class="leyenda-item"><i class="muestra ocupada"></i> Ocupada</span>
+  <span class="leyenda-item"><i class="muestra seleccionada"></i> Tu selección</span>
+</div>
+
+<div class="mapa">
+  @for (fila of filas(); track fila) {
+    <div class="fila-butacas">
+      <span class="etiqueta-fila">{{ fila }}</span>
+      @for (b of butacasDeFila(fila); track b.id) {
+        <button
+          class="butaca"
+          [class]="b.tipo"
+          [class.ocupada]="!estaDisponible(b.id)"
+          [class.seleccionada]="seleccionadas().includes(b.id)"
+          [disabled]="!estaDisponible(b.id)"
+          (click)="toggleButaca(b)">
+          {{ b.numero }}
+        </button>
+      }
+    </div>
+  }
+</div>
+
+<button class="btn btn-primary" [disabled]="seleccionadas().length === 0" (click)="continuar()">
+  Continuar ({{ seleccionadas().length }} butaca{{ seleccionadas().length === 1 ? '' : 's' }})
+</button>

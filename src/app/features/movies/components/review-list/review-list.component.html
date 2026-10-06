@@ -1,0 +1,15 @@
+<div class="resenas">
+  @if (resenas.length > 0) {
+    <p class="promedio">⭐ {{ promedio().toFixed(1) }} ({{ resenas.length }} reseña{{ resenas.length === 1 ? '' : 's' }})</p>
+  } @else {
+    <p class="ficha-meta">Todavía no hay reseñas para esta película.</p>
+  }
+
+  @for (r of resenas; track r.id) {
+    <div class="card resena-item">
+      <p class="puntuacion">{{ '⭐'.repeat(r.puntuacion) }}</p>
+      <p>{{ r.comentario }}</p>
+      <p class="ficha-meta">{{ r.creado_en | date: 'd/M/yyyy' }}</p>
+    </div>
+  }
+</div>

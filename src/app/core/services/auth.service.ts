@@ -15,12 +15,30 @@ export class AutenticacionService {
   }
 
   async registrar(email: string, password: string, datos: Partial<PerfilUsuario>) {
+  const { data, error } = await this.supabase.client.auth.signUp({ email, password });
+  if (error) throw error;
+
+  if (!data.user) {
+    throw new Error('No se pudo crear el usuario. Intentá nuevamente.');
+  }
+
+  const { error: errorPerfil } = await this.supabase.client
+    .from('usuarios')
+    .insert({ id: data.user.id, email, nombre: datos.nombre, apellido: datos.apellido, fecha_nacimiento: datos.fecha_nacimiento, grupo_sanguineo: datos.grupo_sanguineo, color_ojos: datos.color_ojos, dias_vacaciones: datos.dias_vacaciones ?? 0, rol: 'cliente', puntos_fidelizacion: 0, credito_cuenta: 0 });
+
+  if (errorPerfil) throw errorPerfil;
+
+  await this.cargarPerfil(data.user.id);
+}
+
+  /*
+  async registrar(email: string, password: string, datos: Partial<PerfilUsuario>) {
     const { data, error } = await this.supabase.client.auth.signUp({ email, password });
     if (error) throw error;
     if (data.user) {
-      await this.supabase.client.from('usuarios').insert({ id: data.user.id, email, ...datos });
+      await this.supabase.client.from('usuarios').insert({ id: data.user.id, email, nombre: datos.nombre, apellido: datos.apellido, fecha_nacimiento: datos.fecha_nacimiento, grupo_sanguineo: datos.grupo_sanguineo, color_ojos: datos.color_ojos, dias_vacaciones: datos.dias_vacaciones ?? 0, rol: 'cliente', puntos_fidelizacion: 0, credito_cuenta: 0 });
     }
-  }
+  }*/
 
   async iniciarSesion(email: string, password: string) {
     const { error } = await this.supabase.client.auth.signInWithPassword({ email, password });

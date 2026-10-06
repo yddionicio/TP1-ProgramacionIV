@@ -1,0 +1,22 @@
+@if (pelicula(); as p) {
+  <div class="ficha-pelicula">
+    <img [src]="p.imagen_url" [alt]="p.nombre" />
+    <div>
+      <h2>{{ p.nombre }}</h2>
+      <p class="ficha-meta">{{ p.duracion_min }} min · {{ p.formatos.join(' · ') }}</p>
+      @if (p.restriccion_edad) {
+        <p class="ficha-meta">Apta para mayores de {{ p.restriccion_edad }} años</p>
+      }
+      <p>{{ p.sinopsis }}</p>
+
+      <a class="btn btn-primary" [routerLink]="['/compra', p.id, 'funciones']">
+        Comprar entradas
+      </a>
+    </div>
+  </div>
+
+  <!-- <app-review-list [resenas]="resenas()" /> -->
+  <!-- <app-review-form (enviar)="publicarResena($event)" /> -->
+} @else {
+  <p>Cargando película...</p>
+}

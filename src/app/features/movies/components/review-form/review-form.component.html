@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="card">
+  <h4>Dejá tu reseña</h4>
+
+  <div class="estrellas">
+    @for (n of [1, 2, 3, 4, 5]; track n) {
+      <button type="button" class="estrella" [class.activa]="n <= (form.value.puntuacion ?? 0)" (click)="elegirPuntuacion(n)">★</button>
+    }
+  </div>
+
+  <div class="input-group">
+    <textarea class="input" formControlName="comentario" rows="3" placeholder="¿Qué te pareció la película?"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Publicar reseña</button>
+</form>

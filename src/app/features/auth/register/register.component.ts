@@ -55,8 +55,22 @@ export class RegisterComponent {
     });
     this.router.navigate(['/']);
   } catch (e: any) {
-    this.errorMsg = e.message;
+    this.errorMsg = this.traducirError(e);
   }
+}
+
+private traducirError(e: any): string {
+  const msg = e?.message ?? '';
+  if (msg.includes('rate limit')) {
+    return 'Se alcanzó el límite de registros por ahora. Esperá unos minutos y volvé a intentar.';
+  }
+  if (msg.includes('already registered') || msg.includes('already exists')) {
+    return 'Ese email ya tiene una cuenta. Probá iniciar sesión.';
+  }
+  if (msg.includes('Password')) {
+    return 'La contraseña no cumple los requisitos mínimos de Supabase.';
+  }
+  return 'No se pudo completar el registro. Intentá de nuevo en unos minutos.';
 }
 
  /* async onSubmit() {

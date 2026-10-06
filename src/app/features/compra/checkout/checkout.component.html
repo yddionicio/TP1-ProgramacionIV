@@ -1,0 +1,44 @@
+<h2>Candy bar</h2>
+
+<div class="grid-productos">
+  @for (p of productos(); track p.id) {
+    <div class="card producto-item">
+      <span>{{ p.nombre }}</span>
+      <span>${{ p.precio }}</span>
+      <button class="btn btn-secondary" (click)="agregarProducto(p)">Agregar</button>
+    </div>
+  }
+</div>
+
+<h3>Combos destacados</h3>
+<div class="grid-productos">
+  @for (c of combos(); track c.id) {
+    <div class="card producto-item combo-destacado">
+      <span>{{ c.nombre }}</span>
+      <span class="ficha-meta">{{ c.descripcion }}</span>
+      <span>${{ c.precio }}</span>
+      <button class="btn btn-secondary" (click)="agregarCombo(c)">Agregar</button>
+    </div>
+  }
+</div>
+
+<h3>Tu carrito</h3>
+<ul class="lista-carrito">
+  <li>{{ butacaIds.length }} entrada(s) — ${{ subtotalEntradas() }}</li>
+  @for (item of carrito(); track $index) {
+    <li>
+      {{ item.nombre }} — ${{ item.precio }}
+      <button class="btn btn-secondary" (click)="quitarItem($index)">Quitar</button>
+    </li>
+  }
+</ul>
+
+@if (cuponAplicado()) {
+  <p class="descuento-aplicado">Cupón {{ cuponAplicado() }} aplicado (-{{ descuento() * 100 }}%)</p>
+}
+
+<p class="total">Total: ${{ total() | number: '1.0-0' }}</p>
+
+<button class="btn btn-primary" [disabled]="procesando()" (click)="confirmarCompra()">
+  {{ procesando() ? 'Procesando...' : 'Confirmar y pagar' }}
+</button>

@@ -1,0 +1,12 @@
+@if (compra(); as c) {
+  <div class="card confirmacion-card">
+    <h2>¡Compra confirmada!</h2>
+    <p>{{ c.funciones.peliculas.nombre }}</p>
+    <p>{{ c.funciones.salas.nombre }} — {{ c.funciones.fecha_hora | date: 'EEEE d/M HH:mm' }}hs</p>
+    <p>Butacas: {{ c.entradas.map(e => e.butacas.fila + e.butacas.numero).join(', ') }}</p>
+    <p class="total">Total pagado: ${{ c.total }}</p>
+    <button class="btn btn-primary" (click)="descargarPdf()">Descargar entrada (PDF + QR)</button>
+  </div>
+} @else {
+  <p>Cargando confirmación...</p>
+}

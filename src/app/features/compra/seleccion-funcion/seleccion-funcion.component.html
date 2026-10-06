@@ -1,0 +1,21 @@
+<h2>Elegí función</h2>
+
+<div class="selector-dias">
+  @for (dia of dias(); track dia) {
+    <button class="dia-pill" [class.activo]="dia === diaSeleccionado()" (click)="diaSeleccionado.set(dia)">
+      {{ dia | date: 'EEE' }}
+      <small>{{ dia | date: 'd/M' }}</small>
+    </button>
+  }
+</div>
+
+<div class="lista-funciones">
+  @for (f of funcionesDelDia(); track f.id) {
+    <button class="card card-hover funcion-item" (click)="elegir(f.id)">
+      <span>{{ f.fecha_hora | date: 'HH:mm' }}hs</span>
+      <span>${{ precio(f) }}</span>
+    </button>
+  } @empty {
+    <p>No hay funciones programadas para este día.</p>
+  }
+</div>
